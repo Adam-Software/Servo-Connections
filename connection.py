@@ -37,6 +37,12 @@ class Connection(metaclass=MetaSingleton):
         if self._portHandler.openPort():
             logging.info("Succeeded to open the port")
 
+    def getPortHandler(self):
+        if self._portHandler is None:
+            self._initPortHandler()
+
+        return self._portHandler
+
     def getPacketHandler(self):
         if self._packetHandler is None:
             self._initPortHandler()

@@ -6,8 +6,10 @@ class ConnectionExample():
     SCSCL_PRESENT_VOLTAGE      = 62
     SCS_ID                     = 13
 
-    packetHandler = Connection.getPacketHandler()
-    scs_present_voltage_speed, scs_comm_result, scs_error = packetHandler.read4ByteTxRx(portHandler, SCS_ID, SCSCL_PRESENT_VOLTAGE)
+    packetHandler = Connection().getPacketHandler()
+    portHandler = Connection().getPortHandler()
+
+    scs_present_voltage_speed, scs_comm_result, scs_error = packetHandler.read4ByteTxRx(self.portHandler, SCS_ID, SCSCL_PRESENT_VOLTAGE)
 
     def getVoltage(self):
         if scs_comm_result != COMM_SUCCESS:
