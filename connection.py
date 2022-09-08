@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-import os
 from scservo_sdk import *
 import logging
 
@@ -45,3 +43,16 @@ class Connection(metaclass=MetaSingleton):
             self._initPacketHandler()
 
         return self._packetHandler
+
+if __name__=='__main__':
+    connect1 = Connection().getPacketHandler()
+    connect2 = Connection().getPacketHandler()
+    connect3 = Connection().getPacketHandler()
+    connect4 = Connection().getPacketHandler()
+    connect5 = Connection().getPacketHandler()
+
+    print("Connection Objects 1", connect1)
+    print("Connection Objects 2", connect2)
+    print("Connection Objects 3", connect3)
+    print("Connection Objects 4", connect4)
+    print("Connection Objects 5", connect5)
