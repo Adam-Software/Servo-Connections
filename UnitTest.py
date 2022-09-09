@@ -11,12 +11,12 @@ class ConnectTestCase(unittest.TestCase):
 
     def test_not_init_close_port(self):
         connect = Connection()
-        self.assertEqual(connect.closePort(), None)
+        self.assertEqual(connect.closePort(), False)
 
     def test_init_close_port(self):
         connect = Connection()
         connect.getPacketHandler()
-        self.assertEqual(connect.closePort(), None)
+        self.assertEqual(connect.closePort(), True)
 
 
 if __name__ == '__main__':

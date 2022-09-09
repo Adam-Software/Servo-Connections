@@ -61,3 +61,6 @@ class Connection(metaclass=MetaSingleton):
             self._portHandler.closePort()
             self._portHandler = None
             self._packetHandler = None
+            return True
+
+        return False
