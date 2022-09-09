@@ -11,9 +11,12 @@ class MyTestCase(unittest.TestCase):
 
     def test_close_port(self):
         connect = Connection()
-        connect.getPacketHandler()
+        port_handler = connect.getPortHandler()
+        packet_handler = connect.getPacketHandler()
+
         connect.closePort()
-        self.assertEqual(connect.getPacketHandler(), None)
+        self.assertEqual(port_handler, None)
+        self.assertEqual(packet_handler, None)
 
 
 if __name__ == '__main__':
