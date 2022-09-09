@@ -11,7 +11,6 @@ class ConnectionExample():
     scs_end                    = 0
 
     packetHandler = Connection().getPacketHandler()
-    portHandler = Connection().getPortHandler()
 
     def getVoltage(self):
         scs_present_voltage_speed, scs_comm_result, scs_error = self.packetHandler.read4ByteTxRx(self.SCS_ID, self.SCSCL_PRESENT_VOLTAGE)
