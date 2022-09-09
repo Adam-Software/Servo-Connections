@@ -1,3 +1,4 @@
+import logging
 import unittest
 from servo_serial.connection import Connection
 
@@ -17,6 +18,11 @@ class ConnectTestCase(unittest.TestCase):
         connect = Connection()
         connect.getPacketHandler()
         self.assertEqual(connect.closePort(), True)
+
+    def test_change_loglevel(self):
+        connect = Connection()
+        connect.setLoginLevel(logginLevel=logging.INFO)
+        connect.getPacketHandler()
 
 
 if __name__ == '__main__':
