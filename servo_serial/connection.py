@@ -15,6 +15,7 @@ class MetaSingleton(type):
 
 
 class Connection(metaclass=MetaSingleton):
+
     logging.basicConfig(format='%(asctime)s %(message)s',
                         datefmt='%m/%d/%Y %I:%M:%S %p',
                         encoding='utf-8')
@@ -23,6 +24,9 @@ class Connection(metaclass=MetaSingleton):
     _DEVICENAME = '/dev/ttyUSB0'
     _portHandler = None
     _packetHandler = None
+
+    def __init__(self):
+        self.setLogginLevel()
 
     def _initPortHandler(self):
         if self._portHandler is None:
@@ -42,9 +46,11 @@ class Connection(metaclass=MetaSingleton):
         if self._portHandler.openPort():
             logging.info("Succeeded to open the port")
 
-    def setLoginLevel(self, logginLevel=logging.ERROR):
+    def setLogginLevel(self, logginLevel=logging.ERROR):
         logging.getLogger().setLevel(logginLevel)
 
+    def getLoggingLevel(self):
+        logging.getLogger().getEffectiveLevel()
 
     def getPortHandler(self):
         if self._portHandler is None:

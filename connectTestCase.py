@@ -19,11 +19,10 @@ class ConnectTestCase(unittest.TestCase):
         connect.getPacketHandler()
         self.assertEqual(connect.closePort(), True)
 
-    def test_change_loglevel(self):
+    def test_default_loglevel(self):
         connect = Connection()
-        connect.setLoginLevel(logginLevel=logging.INFO)
-        connect.getPacketHandler()
-
+        level = connect.getLoggingLevel()
+        self.assertEqual(level, logging.ERROR)
 
 if __name__ == '__main__':
     unittest.main()
