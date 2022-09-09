@@ -15,24 +15,34 @@ class MetaSingleton(type):
 
 
 class Connection(metaclass=MetaSingleton):
-    logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', encoding='utf-8',
-                        level=logging.DEBUG)
+    logging.basicConfig(format='%(asctime)s %(message)s',
+                        datefmt='%m/%d/%Y %I:%M:%S %p',
+                        encoding='utf-8',
+                        level=logging.ERROR)
 
-    _BAUDRATE  = 1000000
+    _BAUDRATE: int = 1000000
     _DEVICENAME = '/dev/ttyUSB0'
     _portHandler = None
     _packetHandler = None
+
     def _initPortHandler(self):
         if self._portHandler is None:
             self._portHandler = PortHandler(self._DEVICENAME)
             self._openPort()
+
     def _initPacketHandler(self):
         if self._packetHandler is None:
             self._packetHandler = sms_sts(self._portHandler)
             self._setBaudrate()
+
     def _setBaudrate(self):
         if self._portHandler.setBaudRate(self._BAUDRATE):
             logging.info("Succeeded to change the baudrate")
+
+    def _openPort(self):
+        if self._portHandler.openPort():
+            logging.info("Succeeded to open the port")
+
     def getPortHandler(self):
         if self._portHandler is None:
             self._initPortHandler()
