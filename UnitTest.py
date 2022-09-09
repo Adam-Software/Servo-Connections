@@ -1,22 +1,19 @@
 import unittest
 from servo_serial.connection import Connection
-#from scservo_sdk import *
+
 
 class MyTestCase(unittest.TestCase):
 
-    SCSCL_PRESENT_VOLTAGE      = 62
-    SCS_ID                     = 13
-    scs_end                    = 0
-
-    packetHandler = Connection().getPacketHandler()
-    portHandler = Connection().getPortHandler()
-
-    def test_something(self):
-        self.assertEqual(True, True)  # add assertion here
+    def similarity_test_of_class_instances(self):
+        connect1 = Connection()
+        connect2 = Connection()
+        self.assertEqual(connect1, connect2)
 
     def test_close_port(self):
-        Connection().closePort()
-        self.assertEqual(self.packetHandler, None)
+        connect = Connection()
+        packet_handler = connect.getPacketHandler()
+        connect.closePort()
+        self.assertEqual(packet_handler, None)
 
 if __name__ == '__main__':
     unittest.main()
