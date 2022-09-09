@@ -4,3 +4,8 @@
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/modules.xml
 /.idea/misc.xml
+/Lib/site-packages/
+/Scripts/
+/servo_serial.egg-info/
+/dist/
+/pyvenv.cfg
