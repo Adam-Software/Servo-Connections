@@ -24,19 +24,14 @@ class ConnectTestCase(unittest.TestCase):
         self.assertEqual(connect.closePort(), True)
         connect.closePort()
 
-    def testDefaultLoglevel(self):
+    def testDefaultLoglevelAndChangeLogLevel(self):
         connect = Connection()
         level = connect.getLoggingLevel()
         self.assertEqual(level, logging.ERROR)
-        connect.closePort()
-
-    def testChangeLoglevel(self):
-        connect = Connection()
         targetLevel = logging.INFO
         connect.setLogginLevel(targetLevel)
         self.assertEqual(connect.getLoggingLevel(), targetLevel)
         connect.closePort()
-
 
 
 if __name__ == '__main__':
