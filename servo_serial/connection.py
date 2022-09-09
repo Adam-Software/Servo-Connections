@@ -48,7 +48,7 @@ class Connection(metaclass=MetaSingleton):
         logging.getLogger().setLevel(logginLevel)
 
     def getLoggingLevel(self):
-        logging.getLevelName()
+        return logging.getLogger().getEffectiveLevel()
 
     def getPortHandler(self):
         if self._portHandler is None:
