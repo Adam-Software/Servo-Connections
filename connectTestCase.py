@@ -10,25 +10,32 @@ class ConnectTestCase(unittest.TestCase):
         connect2 = Connection()
         self.assertEqual(connect1, connect2)
 
+        connect1.closePort()
+        connect2.closePort()
+
     def testNotInitClosePort(self):
         connect = Connection()
         self.assertEqual(connect.closePort(), False)
+        connect.closePort()
 
     def testInitClosePort(self):
         connect = Connection()
         connect.getPacketHandler()
         self.assertEqual(connect.closePort(), True)
+        connect.closePort()
 
     def testDefaultLoglevel(self):
         connect = Connection()
         level = connect.getLoggingLevel()
         self.assertEqual(level, logging.ERROR)
+        connect.closePort()
 
     def testChangeLoglevel(self):
         connect = Connection()
         targetLevel = logging.INFO
         connect.setLogginLevel(targetLevel)
         self.assertEqual(connect.getLoggingLevel(), targetLevel)
+        connect.closePort()
 
 
 
