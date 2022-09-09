@@ -51,8 +51,14 @@ class Connection(metaclass=MetaSingleton):
 
         return self._packetHandler
 
+    def closePort(self):
+        if self._portHandler is not None:
+            self._portHandler.closePort()
+
 if __name__=='__main__':
     connect1 = Connection().getPacketHandler()
+    connect1.closePort()
+
     connect2 = Connection().getPacketHandler()
     connect3 = Connection().getPacketHandler()
     connect4 = Connection().getPacketHandler()

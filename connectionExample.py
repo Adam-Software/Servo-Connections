@@ -1,4 +1,7 @@
-from connection import Connection
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from servo_serial.connection import Connection
 from scservo_sdk import *
 
 class ConnectionExample():
