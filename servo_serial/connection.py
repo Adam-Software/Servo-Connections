@@ -43,7 +43,7 @@ class Connection(metaclass=MetaSingleton):
             logging.info("Succeeded to open the port")
 
     def setLoginLevel(self, logginLevel=logging.ERROR):
-        logging.Logger.setLevel(logginLevel)
+        logging.Logger.setLevel(self, logginLevel)
 
     def getPortHandler(self):
         if self._portHandler is None:
