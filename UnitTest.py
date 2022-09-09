@@ -2,7 +2,7 @@ import unittest
 from servo_serial.connection import Connection
 
 
-class MyTestCase(unittest.TestCase):
+class ConnectTestCase(unittest.TestCase):
 
     def test_similarity_class_instances(self):
         connect1 = Connection()
@@ -11,6 +11,11 @@ class MyTestCase(unittest.TestCase):
 
     def test_not_init_close_port(self):
         connect = Connection()
+        self.assertEqual(connect.closePort(), None)
+
+    def test_init_close_port(self):
+        connect = Connection()
+        connect.getPacketHandler()
         self.assertEqual(connect.closePort(), None)
 
 
