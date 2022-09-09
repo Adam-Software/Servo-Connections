@@ -24,5 +24,6 @@ class ConnectTestCase(unittest.TestCase):
         level = connect.getLoggingLevel()
         self.assertEqual(level, logging.ERROR)
 
+
 if __name__ == '__main__':
     unittest.main()

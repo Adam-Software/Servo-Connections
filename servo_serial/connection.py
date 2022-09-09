@@ -18,15 +18,13 @@ class Connection(metaclass=MetaSingleton):
 
     logging.basicConfig(format='%(asctime)s %(message)s',
                         datefmt='%m/%d/%Y %I:%M:%S %p',
-                        encoding='utf-8')
+                        encoding='utf-8',
+                        level=logging.ERROR)
 
     _BAUDRATE = 1000000
     _DEVICENAME = '/dev/ttyUSB0'
     _portHandler = None
     _packetHandler = None
-
-    def __init__(self):
-        self.setLogginLevel()
 
     def _initPortHandler(self):
         if self._portHandler is None:
@@ -46,7 +44,7 @@ class Connection(metaclass=MetaSingleton):
         if self._portHandler.openPort():
             logging.info("Succeeded to open the port")
 
-    def setLogginLevel(self, logginLevel=logging.ERROR):
+    def setLogginLevel(self, logginLevel):
         logging.getLogger().setLevel(logginLevel)
 
     def getLoggingLevel(self):
