@@ -26,6 +26,8 @@ class Connection(metaclass=MetaSingleton):
     _portHandler = None
     _packetHandler = None
 
+    protocol_end = 0  # SCServo bit end(STS/SMS=0, SCS=1)
+
     def _initPortHandler(self):
         if self._portHandler is None:
             self._portHandler = PortHandler(self._DEVICENAME)
@@ -33,7 +35,7 @@ class Connection(metaclass=MetaSingleton):
 
     def _initPacketHandler(self):
         if self._packetHandler is None:
-            self._packetHandler = sms_sts(self._portHandler)
+            self._packetHandler = PacketHandler(self.protocol_end)
             self._setBaudrate()
 
     def _setBaudrate(self):
