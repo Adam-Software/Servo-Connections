@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='servo_serial',
-    version='0.0.1',
+    version='0.0.2',
     packages=['servo_serial'],
     url='https://github.com/Adam-Software/Servo-serial',
     license='MIT',
