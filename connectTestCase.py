@@ -5,6 +5,12 @@ from servo_serial.connection import Connection
 
 class ConnectTestCase(unittest.TestCase):
 
+    # this test must be run without error on win system
+    def testDetectNtSystem(self):
+        connect = Connection()
+        connect.getPortHandler()
+        connect.getPacketHandler()
+
     def testSimilarityClassInstances(self):
         connect1 = Connection()
         connect2 = Connection()

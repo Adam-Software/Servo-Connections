@@ -3,6 +3,7 @@
 
 from scservo_sdk import *
 import logging
+import os
 
 
 class MetaSingleton(type):
@@ -29,11 +30,19 @@ class Connection(metaclass=MetaSingleton):
     protocol_end = 0  # SCServo bit end(STS/SMS=0, SCS=1)
 
     def _initPortHandler(self):
+        # for run test on win system
+        if os.name == 'nt':
+            return
+
         if self._portHandler is None:
             self._portHandler = PortHandler(self._DEVICENAME)
             self._openPort()
 
     def _initPacketHandler(self):
+        # for run test on win system
+        if os.name == 'nt':
+            return
+
         if self._packetHandler is None:
             self._packetHandler = PacketHandler(self.protocol_end)
             self._setBaudrate()

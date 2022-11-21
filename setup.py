@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='servo_serial',
-    version='0.0.3',
+    version='0.0.4',
     packages=['servo_serial'],
     url='https://github.com/Adam-Software/Servo-serial',
     license='MIT',
@@ -16,7 +16,7 @@ setup(
     long_description=long_description,
     install_requires=['feetech-servo-sdk>=0.2.0'],
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
         'Operating System :: POSIX :: Other',
         'Programming Language :: Python :: 3'
